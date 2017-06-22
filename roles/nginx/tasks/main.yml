@@ -24,5 +24,6 @@
     template: src=templates/nginx.j2 dest=/etc/nginx/sites-available/{{ domain }}
 
   - name: Activating {{ domain }}
+    become: yes
     file: src=/etc/nginx/sites-available/{{ domain }} dest=/etc/nginx/sites-enabled/{{ domain }} state=Link
     notify: reload nginx
