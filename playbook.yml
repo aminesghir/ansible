@@ -1,0 +1,13 @@
+---
+- name: VPS OVH Install
+  hosts: vpsovh
+  remote_user: root
+  vars:
+    user: groot
+    domain: sghir.me
+
+  roles:
+    - utils
+    - user
+    - nginx
+...

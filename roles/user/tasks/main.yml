@@ -1,0 +1,10 @@
+---
+  - name: Creating {{ user }} user
+    when: user is defined
+    user: name={{ user }} comment="main user"
+  - name: Adding ssh key to {{ user }}
+    when: user is defined
+    authorized_key: user={{ user }} key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  - name: make {{ user }} sudoer
+    when: user is defined
+    template: src=templates/sudoers.j2 dest=/etc/sudoers.d/{{ user }}-sudoer validate='visudo -cf %s'

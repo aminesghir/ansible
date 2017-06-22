@@ -1,0 +1,8 @@
+---
+  - name: Installing tools
+    apt: name={{ item }} update_cache=yes state=latest
+    with_items:
+      - vim
+      - htop
+      - zsh
+      - git

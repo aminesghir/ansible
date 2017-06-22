@@ -1,0 +1,28 @@
+---
+  - name: Install nginx
+    become: yes
+    apt: name=nginx state=latest
+
+  - name: Starting nginx
+    become: yes
+    service: name=nginx state=started enabled=true
+
+  - name: Delete default nginx conf file
+    become: yes
+    file: path=/etc/nginx/sites-enabled/default state=absent
+    notify: reload nginx
+
+  - name: Creating directory
+    become: yes
+    file: path=/home/{{ user }}/{{ domain }} state=directory owner={{ user }}
+
+  - name: Link to www
+    become: yes
+    file: src=/home/{{ user }}/{{ domain }} dest=/var/www/{{ domain }} state=link
+
+  - name: Configuring nginx
+    template: src=templates/nginx.j2 dest=/etc/nginx/sites-available/{{ domain }}
+
+  - name: Activating {{ domain }}
+    file: src=/etc/nginx/sites-available/{{ domain }} dest=/etc/nginx/sites-enabled/{{ domain }} state=Link
+    notify: reload nginx
