@@ -21,6 +21,7 @@
     file: src=/home/{{ user }}/{{ domain }} dest=/var/www/{{ domain }} state=link
 
   - name: Configuring nginx
+    become: yes
     template: src=templates/nginx.j2 dest=/etc/nginx/sites-available/{{ domain }}
 
   - name: Activating {{ domain }}
