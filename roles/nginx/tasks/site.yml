@@ -1,5 +1,5 @@
 ---
-  - name: Creating directory /home/{{ user }}/{{ domain }}
+  - name: "Creating directory /home/{{ user }}/{{ domain }}"
     become: yes
     file: path=/home/{{ user }}/{{ domain }} state=directory owner={{ user }}
 
