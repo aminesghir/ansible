@@ -11,6 +11,6 @@
   - name: update apt
     apt: update_cache=yes
 
-  - name: Installing php
+  - name: Installing {{ php_version }} packages
     apt: name={{ item }} state=latest
     with_items: "{{ php_packages }}"
