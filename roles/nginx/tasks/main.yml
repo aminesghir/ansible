@@ -12,7 +12,7 @@
     file: path=/etc/nginx/sites-enabled/default state=absent
     notify: reload nginx
 
-  - name: Install {{ php_version }}
+  - name: Install php7.0
     become: yes
     include: php.yml
 
