@@ -9,7 +9,8 @@
 
   - name: Configuring nginx
     become: yes
-    template: src=templates/nginx.j2 dest=/etc/nginx/sites-available/{{ item }}
+    template: src=templates/nginx.j2 dest=/etc/nginx/sites-available/{{ item }} force=yes
+    notify: reload nginx
 
   - name: Activating {{ item }}
     become: yes
