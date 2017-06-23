@@ -1,14 +1,14 @@
 php_packages:
-  - "{{ php_version }}"
-  - "{{ php_version }}-common"
-  - "{{ php_version }}-cli"
-  - "{{ php_version }}-intl"
-  - "{{ php_version }}-curl"
-  - "{{ php_version }}-cgi"
-  - "{{ php_version }}-fpm"
-  - "{{ php_version }}-mcrypt"
-  - "{{ php_version }}-mysql"
-  - "{{ php_version }}-gd"
+  - php7.1
+  - php7.1-common
+  - php7.1-cli
+  - php7.1-intl
+  - php7.1-curl
+  - php7.1-cgi
+  - php7.1-fpm
+  - php7.1-mcrypt
+  - php7.1-mysql
+  - php7.1-gd
 php_timezone: Europe/Paris
 php_upload_max_filsize: "20M"
 php_post_max_size: "20M"
