@@ -4,7 +4,8 @@
   remote_user: groot
   vars:
     user: groot
-    domain: sghir.me
+    domains:
+      - sghir.me
 
   roles:
   #  - utils

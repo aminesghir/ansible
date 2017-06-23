@@ -12,19 +12,6 @@
     file: path=/etc/nginx/sites-enabled/default state=absent
     notify: reload nginx
 
-  - name: Creating directory
-    become: yes
-    file: path=/home/{{ user }}/{{ domain }} state=directory owner={{ user }}
-
-  - name: Link to www
-    become: yes
-    file: src=/home/{{ user }}/{{ domain }} dest=/var/www/{{ domain }} state=link
-
-  - name: Configuring nginx
-    become: yes
-    template: src=templates/nginx.j2 dest=/etc/nginx/sites-available/{{ domain }}
-
-  - name: Activating {{ domain }}
-    become: yes
-    file: src=/etc/nginx/sites-available/{{ domain }} dest=/etc/nginx/sites-enabled/{{ domain }} state=link
-    notify: reload nginx
+  - name: Websites config
+    include: site.yml
+    with_items: domains
