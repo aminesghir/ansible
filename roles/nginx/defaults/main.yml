@@ -1,6 +1,6 @@
 php_packages:
   - "{{ php_version }}"
-  - "{{ php_version }}"-common
+  - "{{ php_version }}-common"
   - "{{ php_version }}"-cli
   - "{{ php_version }}"-intl
   - "{{ php_version }}"-curl
