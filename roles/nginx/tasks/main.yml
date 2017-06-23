@@ -12,6 +12,9 @@
     file: path=/etc/nginx/sites-enabled/default state=absent
     notify: reload nginx
 
+  - name: Install {{ php_version }}
+    include: php.yml
+    
   - name: Websites config
     include: site.yml
     with_items: domains

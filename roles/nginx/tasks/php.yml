@@ -1,0 +1,16 @@
+---
+  - name: Adding DotDeb repository
+    apt_repository: repo='{{ item }}'
+    with_items:
+      - deb http://packages.dotdeb.org jessie all
+      - deb-src http://packages-dotdeb.org jessie all
+
+  - name: Adding DotDeb key
+    apt_key: url=https://www.dotdeb.org/dotdeb.gpg
+
+  - name: update apt
+    apt: update_cache=yes
+
+  - name: Installing php
+    apt: name={{ item }} state=latest
+    with_items: php_packages

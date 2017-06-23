@@ -4,6 +4,7 @@
   remote_user: groot
   vars:
     user: groot
+    php_version: php7.1
     domains:
       - sghir.me
 
