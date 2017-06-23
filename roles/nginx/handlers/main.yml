@@ -2,3 +2,6 @@
   - name: reload nginx
     become: yes
     action: service name=nginx state=reloaded
+
+  - name: restart php
+    service: name={{ php_version }}-fpm state=restarted
