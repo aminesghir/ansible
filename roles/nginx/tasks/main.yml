@@ -13,8 +13,9 @@
     notify: reload nginx
 
   - name: Install {{ php_version }}
+    become: yes
     include: php.yml
-    
+
   - name: Websites config
     include: site.yml
     with_items: domains
