@@ -1,17 +1,17 @@
 ---
-  - name: "Creating directory /home/{{ user }}/{{ domain }}"
+  - name: "Creating directory /home/{{ user }}/{{ item }}"
     become: yes
-    file: path=/home/{{ user }}/{{ domain }} state=directory owner={{ user }}
+    file: path=/home/{{ user }}/{{ item }} state=directory owner={{ user }}
 
   - name: Link to www
     become: yes
-    file: src=/home/{{ user }}/{{ domain }} dest=/var/www/{{ domain }} state=link
+    file: src=/home/{{ user }}/{{ item }} dest=/var/www/{{ item }} state=link
 
   - name: Configuring nginx
     become: yes
-    template: src=templates/nginx.j2 dest=/etc/nginx/sites-available/{{ domain }}
+    template: src=templates/nginx.j2 dest=/etc/nginx/sites-available/{{ item }}
 
-  - name: Activating {{ domain }}
+  - name: Activating {{ item }}
     become: yes
-    file: src=/etc/nginx/sites-available/{{ domain }} dest=/etc/nginx/sites-enabled/{{ domain }} state=link
+    file: src=/etc/nginx/sites-available/{{ item  }} dest=/etc/nginx/sites-enabled/{{ item }} state=link
     notify: reload nginx
