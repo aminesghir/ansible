@@ -13,4 +13,4 @@
 
   - name: Installing php
     apt: name={{ item }} state=latest
-    with_items: {{ php_packages }}
+    with_items: "{{ php_packages }}"
