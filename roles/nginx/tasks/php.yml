@@ -12,5 +12,4 @@
     apt: update_cache=yes
 
   - name: Installing php
-    apt: name={{ item }} state=latest
-    with_items: php_packages
+    apt: name=php7.0 state=latest
