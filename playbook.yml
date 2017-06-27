@@ -1,14 +1,19 @@
 ---
 - name: VPS OVH Install
   hosts: vpsovh
-  remote_user: groot
+  remote_user: root
   vars:
     user: zarhgon
     domains:
       - sghir.me
+    clients:
+      - username: rivalia
+        password: rivalia
+        domain: rivalia.sghir.me
 
   roles:
-    - utils
-    - user
-    - nginx
+    #- utils
+    #- user
+    #- nginx
+    - {role: mysql, mysql_root_db_pass: root, mysql_db: none, mysql_users: none, mysql_repl_user: none }
 ...
