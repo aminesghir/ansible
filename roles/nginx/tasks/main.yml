@@ -3,6 +3,11 @@
     become: yes
     apt: name=nginx state=latest
 
+  - name: set firewall permission
+    ufw:
+      rule: allow
+      name: 'Nginx FULL'
+
   - name: Starting nginx
     become: yes
     service: name=nginx state=started enabled=true
