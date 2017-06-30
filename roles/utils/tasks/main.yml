@@ -3,10 +3,10 @@
     apt: name={{ item }} update_cache=yes state=latest
     with_items:
       - ufw
-      - vim
-      - htop
-      - zsh
-      - git
+      #- vim
+      #- htop
+      #- zsh
+      #- git
 
   - name: allow OpenSSH on ufw
     ufw:

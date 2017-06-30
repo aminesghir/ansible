@@ -1,8 +1,8 @@
 server {
   listen 80;
   listen [::]:80;
-  server_name {{ item }} www.{{ item }};
-  root /var/www/{{ item }};
+  server_name {{ client.domain }} www.{{ client.domain }};
+  root /var/www/{{ client.domain }};
 
   index index.php index.html;
 

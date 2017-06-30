@@ -23,4 +23,3 @@
 
   - name: Websites config
     include: site.yml
-    with_items: domains

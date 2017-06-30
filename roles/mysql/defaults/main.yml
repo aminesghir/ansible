@@ -11,8 +11,8 @@ mysql_db:
        replicate: no
 
 mysql_users:
-     - name: benz
-       pass: foobar
+     - name: "{{ client.username }}"
+       pass: "{{ client.password }}"
        priv: "*.*:ALL"
 
 mysql_repl_user:

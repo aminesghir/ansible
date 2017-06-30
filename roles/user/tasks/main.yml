@@ -1,11 +1,11 @@
 ---
-  - name: Creating {{ user }} user
-    when: user is defined
-    user: name={{ user }} password={{ user }} comment={{ user }}
+  - name: Creating {{ client.username }} user with {{ client.password }} password
+    when: client.username is defined
+    user: name={{ client.username }} password={{ client.password | password_hash("sha512") }}
 
-  - name: Adding ssh key to {{ user }}
-    when: user is defined
-    authorized_key: user={{ user }} key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  - name: Adding ssh key to {{ client.username }}
+    when: client.username is defined
+    authorized_key: user={{ client.username }} key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
 #  - name: make {{ user }} sudoer
 #    when: user is defined
