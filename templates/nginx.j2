@@ -2,7 +2,7 @@ server {
   listen 80;
   listen [::]:80;
   server_name {{ client.domain }} www.{{ client.domain }};
-  root /var/www/{{ client.domain }};
+  root /var/www/{{ client.username }};
 
   index index.php index.html;
 
